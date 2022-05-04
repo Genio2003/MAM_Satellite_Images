@@ -83,9 +83,149 @@ function Multiple_PNGs_to_GIF()
 	-> save("images/GIF/"."RST".".gif");
 }
 
+// https://www.geeksforgeeks.org/deleting-all-files-from-a-folder-using-php/ //
+function Delete_Old_Photo($folder_path)
+{
+    // PHP program to delete all
+    // file from a folder
+   
+    // List of name of files inside
+    // specified folder
+    $files = glob($folder_path.'/*'); 
+   
+    // Deleting all the files in the list
+    foreach($files as $file) {
+   
+        if(is_file($file)) 
+    
+        // Delete the given file
+        unlink($file);
+    }
+}
+
+function Make_JSON($Response)
+{
+
+    header("Content-Type: application/json; charset=UTF-8");
+
+    $Result = Array (
+        "PNGs" => Array (
+            "NEF" => Array(
+                "0" => Array(
+                    "file_name" => $Response['immagini'][0]['nomefile'],
+                    "time" => $Response['immagini'][0]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][0]['nomefile']
+                ),
+                "1" => Array(
+                    "file_name" => $Response['immagini'][1]['nomefile'],
+                    "time" => $Response['immagini'][1]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][1]['nomefile']
+                ),
+                "2" => Array(
+                    "file_name" => $Response['immagini'][2]['nomefile'],
+                    "time" => $Response['immagini'][2]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][2]['nomefile']
+                ),
+                "3" => Array(
+                    "file_name" => $Response['immagini'][3]['nomefile'],
+                    "time" => $Response['immagini'][3]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][3]['nomefile']
+                ),
+                "4" => Array(
+                    "file_name" => $Response['immagini'][4]['nomefile'],
+                    "time" => $Response['immagini'][4]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][4]['nomefile']
+                )
+            ),
+            "IRC" => Array(
+                "0" => Array(
+                    "file_name" => $Response['immagini'][5]['nomefile'],
+                    "time" => $Response['immagini'][5]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][5]['nomefile']
+                ),
+                "1" => Array(
+                    "file_name" => $Response['immagini'][6]['nomefile'],
+                    "time" => $Response['immagini'][6]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][6]['nomefile']
+                ),
+                "2" => Array(
+                    "file_name" => $Response['immagini'][7]['nomefile'],
+                    "time" => $Response['immagini'][7]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][7]['nomefile']
+                ),
+                "3" => Array(
+                    "file_name" => $Response['immagini'][8]['nomefile'],
+                    "time" => $Response['immagini'][8]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][8]['nomefile']
+                ),
+                "4" => Array(
+                    "file_name" => $Response['immagini'][9]['nomefile'],
+                    "time" => $Response['immagini'][9]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][9]['nomefile']
+                )
+            ),
+            "RST" => Array(
+                "0" => Array(
+                    "file_name" => $Response['immagini'][10]['nomefile'],
+                    "time" => $Response['immagini'][10]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][10]['nomefile']
+                ),
+                "1" => Array(
+                    "file_name" => $Response['immagini'][11]['nomefile'],
+                    "time" => $Response['immagini'][11]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][11]['nomefile']
+                ),
+                "2" => Array(
+                    "file_name" => $Response['immagini'][12]['nomefile'],
+                    "time" => $Response['immagini'][12]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][12]['nomefile']
+                ),
+                "3" => Array(
+                    "file_name" => $Response['immagini'][13]['nomefile'],
+                    "time" => $Response['immagini'][13]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][13]['nomefile']
+                ),
+                "4" => Array(
+                    "file_name" => $Response['immagini'][14]['nomefile'],
+                    "time" => $Response['immagini'][14]['ora'],
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][14]['nomefile']
+                )
+            )
+        ),
+        "GIFs" => Array(
+            "NEF" => Array(
+                "file_name" => "NEF.gif",
+                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/NEF.gif"
+            ),
+            "IRC" => Array(
+                "file_name" => "IRC.gif",
+                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/IRC.gif"
+            ),
+            "RST" => Array(
+                "file_name" => "RST.gif",
+                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/RST.gif"
+            ),
+        ),
+        "Time" => Array(
+            "UTC" => gmdate("H:i:s")
+        )
+    );
+
+    $JSON = json_encode($Result);
+
+    echo ($JSON);
+
+}
+
 function main()
 {
     $Response=json_decode(CallAPI("GET","http://webapp.meteoam.it/json/immaginisatellitari/immaginisatellitari.json"),true);
+
+    Delete_Old_Photo("images/PNG/NEF");
+    Delete_Old_Photo("images/PNG/IRC");
+    Delete_Old_Photo("images/PNG/RST");
+
+    Delete_Old_Photo("images/GIF");
 
     for($i=0;$i<=4;$i++)
     {
@@ -101,19 +241,11 @@ function main()
     }
 
     Multiple_PNGs_to_GIF();
+
+    Make_JSON($Response);
+    
 }
 
 main();
-
-header("Content-Type: application/json; charset=UTF-8");
-
-$Result = new stdClass();
-$Result->NEF = "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/NEF.gif";
-$Result->IRC = "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/IRC.gif";
-$Result->RST = "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/RST.gif";
-
-$JSON = json_encode($Result);
-
-echo ($JSON);
 
 ?>
