@@ -1,6 +1,6 @@
 # MEM_Satellite_Images
 
-### • Descrizione
+### - Descrizione
 Script PHP che permette di ottenere tre tipi diversi di immagini satellitari meteo tramite l'API utilizzata dall'app mobile di [MeteoAM](http://www.meteoam.it "MeteoAM") (Meteo Areonautica Militare).
 
 - Nefodina
@@ -9,8 +9,8 @@ Script PHP che permette di ottenere tre tipi diversi di immagini satellitari met
 
 Per ulteriori info: [http://www.meteoam.it/nefodina/it](http://www.meteoam.it/nefodina/it)
 
-### • Come Funziona?
-• Lo script effettua la chiamata API all'indirizzo "[http://webapp.meteoam.it/json/immaginisatellitari/immaginisatellitari.json](http://webapp.meteoam.it/json/immaginisatellitari/immaginisatellitari.json)" tramite la funzione "Call API", effettuando uno spoofing dell'user agent in modo da far sembrare che la richiesta provenga da un dispositivo mobile.
+### - Come Funziona?
+- Lo script effettua la chiamata API all'indirizzo "[http://webapp.meteoam.it/json/immaginisatellitari/immaginisatellitari.json](http://webapp.meteoam.it/json/immaginisatellitari/immaginisatellitari.json)" tramite la funzione "Call API", effettuando uno spoofing dell'user agent in modo da far sembrare che la richiesta provenga da un dispositivo mobile.
 ```php
 function CallAPI($method, $url, $data = false)
 {
@@ -52,7 +52,28 @@ function CallAPI($method, $url, $data = false)
     return $result;
 }
 ```
-• Converte le immagini da Base64 in PNG.
+- Esegue la funzione "Delete_Old_Photo" per eliminare le vecchie immagini.
+```php
+function Delete_Old_Photo($folder_path)
+{
+    // PHP program to delete all
+    // file from a folder
+   
+    // List of name of files inside
+    // specified folder
+    $files = glob($folder_path.'/*'); 
+   
+    // Deleting all the files in the list
+    foreach($files as $file) {
+   
+        if(is_file($file)) 
+    
+        // Delete the given file
+        unlink($file);
+    }
+}
+```
+- Converte le immagini da Base64 in PNG.
 ```php
 function Base64_to_PNG($filename,$b64,$type)
 {
@@ -77,7 +98,7 @@ function Base64_to_PNG($filename,$b64,$type)
     imagepng($im, $img_file, 0);
 }
 ```
-• Tramite la libreria [AnimGif.php](https://github.com/lunakid/AnimGif "AnimGif.php") converte le immagini PNG in immagini GIF animate.
+- Tramite la libreria [AnimGif.php](https://github.com/lunakid/AnimGif "AnimGif.php") converte le immagini PNG in immagini GIF animate.
 ```php
 function Multiple_PNGs_to_GIF()
 {
@@ -95,7 +116,7 @@ function Multiple_PNGs_to_GIF()
 	-> save("images/GIF/"."RST".".gif");
 }
 ```
-• In fine genera un file JSON contenente i link per ottenere le singole immagini in formato PNG e le GIF animate.
+- In fine genera un file JSON contenente i link per ottenere le singole immagini in formato PNG e le GIF animate.
 ```php
 function Make_JSON($Response)
 {
@@ -212,6 +233,6 @@ function Make_JSON($Response)
 }
 ```
 
-### • Disclaimer
+### - Disclaimer
 
 **Informazioni elaborate dal Servizio Meteorologico dell’Aeronautica Militare e pubblicate sul sito www.meteoam.it**
