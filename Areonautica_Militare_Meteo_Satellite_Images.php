@@ -67,20 +67,20 @@ function Base64_to_PNG($filename,$b64,$type)
     //echo ("https://genio2003.altervista.org".$img_file);
 }
 
-function Multiple_PNGs_to_GIF()
+function Multiple_PNGs_to_GIF($file_name1,$file_name2,$file_name3)
 {
     require "AnimGif.php";
     $anim1 = new GifCreator\AnimGif();
     $anim1	-> create("images/PNG/"."NEF", array(50))
-	-> save("images/GIF/"."NEF".".gif");
+	-> save("images/GIF/".$file_name1);
 
     $anim2 = new GifCreator\AnimGif();
     $anim2	-> create("images/PNG/"."IRC", array(50))
-	-> save("images/GIF/"."IRC".".gif");
+	-> save("images/GIF/".$file_name2);
 
     $anim3 = new GifCreator\AnimGif();
     $anim3	-> create("images/PNG/"."RST", array(50))
-	-> save("images/GIF/"."RST".".gif");
+	-> save("images/GIF/".$file_name3);
 }
 
 // https://www.geeksforgeeks.org/deleting-all-files-from-a-folder-using-php/ //
@@ -103,6 +103,14 @@ function Delete_Old_Photo($folder_path)
     }
 }
 
+// https://stackoverflow.com/questions/20288789/php-date-with-timezone //
+function Unix_Time_Converter($Unix_Time)
+{
+    $dt = new DateTime("@$Unix_Time");
+    //$dt->setTimeZone(new DateTimeZone('Europe/Rome'));
+    return $dt->format('dmYhi');
+}
+
 function Make_JSON($Response)
 {
 
@@ -114,96 +122,96 @@ function Make_JSON($Response)
                 "0" => Array(
                     "file_name" => $Response['immagini'][0]['nomefile'],
                     "time" => $Response['immagini'][0]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][0]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".(Unix_Time_Converter($Response['immagini'][0]['ora'])."_".$Response['immagini'][0]['nomefile'])
                 ),
                 "1" => Array(
                     "file_name" => $Response['immagini'][1]['nomefile'],
                     "time" => $Response['immagini'][1]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][1]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".(Unix_Time_Converter($Response['immagini'][1]['ora'])."_".$Response['immagini'][1]['nomefile'])
                 ),
                 "2" => Array(
                     "file_name" => $Response['immagini'][2]['nomefile'],
                     "time" => $Response['immagini'][2]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][2]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".(Unix_Time_Converter($Response['immagini'][2]['ora'])."_".$Response['immagini'][2]['nomefile'])
                 ),
                 "3" => Array(
                     "file_name" => $Response['immagini'][3]['nomefile'],
                     "time" => $Response['immagini'][3]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][3]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".(Unix_Time_Converter($Response['immagini'][3]['ora'])."_".$Response['immagini'][3]['nomefile'])
                 ),
                 "4" => Array(
                     "file_name" => $Response['immagini'][4]['nomefile'],
                     "time" => $Response['immagini'][4]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][4]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".(Unix_Time_Converter($Response['immagini'][4]['ora'])."_".$Response['immagini'][4]['nomefile'])
                 )
             ),
             "IRC" => Array(
                 "0" => Array(
                     "file_name" => $Response['immagini'][5]['nomefile'],
                     "time" => $Response['immagini'][5]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][5]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/IRC/".(Unix_Time_Converter($Response['immagini'][5]['ora'])."_".$Response['immagini'][5]['nomefile'])
                 ),
                 "1" => Array(
                     "file_name" => $Response['immagini'][6]['nomefile'],
                     "time" => $Response['immagini'][6]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][6]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/IRC/".(Unix_Time_Converter($Response['immagini'][6]['ora'])."_".$Response['immagini'][6]['nomefile'])
                 ),
                 "2" => Array(
                     "file_name" => $Response['immagini'][7]['nomefile'],
                     "time" => $Response['immagini'][7]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][7]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/IRC/".(Unix_Time_Converter($Response['immagini'][7]['ora'])."_".$Response['immagini'][7]['nomefile'])
                 ),
                 "3" => Array(
                     "file_name" => $Response['immagini'][8]['nomefile'],
                     "time" => $Response['immagini'][8]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][8]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/IRC/".(Unix_Time_Converter($Response['immagini'][8]['ora'])."_".$Response['immagini'][8]['nomefile'])
                 ),
                 "4" => Array(
                     "file_name" => $Response['immagini'][9]['nomefile'],
                     "time" => $Response['immagini'][9]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][9]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/IRC/".(Unix_Time_Converter($Response['immagini'][9]['ora'])."_".$Response['immagini'][9]['nomefile'])
                 )
             ),
             "RST" => Array(
                 "0" => Array(
                     "file_name" => $Response['immagini'][10]['nomefile'],
                     "time" => $Response['immagini'][10]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][10]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/RST/".(Unix_Time_Converter($Response['immagini'][10]['ora'])."_".$Response['immagini'][10]['nomefile'])
                 ),
                 "1" => Array(
                     "file_name" => $Response['immagini'][11]['nomefile'],
                     "time" => $Response['immagini'][11]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][11]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/RST/".(Unix_Time_Converter($Response['immagini'][11]['ora'])."_".$Response['immagini'][11]['nomefile'])
                 ),
                 "2" => Array(
                     "file_name" => $Response['immagini'][12]['nomefile'],
                     "time" => $Response['immagini'][12]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][12]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/RST/".(Unix_Time_Converter($Response['immagini'][12]['ora'])."_".$Response['immagini'][12]['nomefile'])
                 ),
                 "3" => Array(
                     "file_name" => $Response['immagini'][13]['nomefile'],
                     "time" => $Response['immagini'][13]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][13]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/RST/".(Unix_Time_Converter($Response['immagini'][13]['ora'])."_".$Response['immagini'][13]['nomefile'])
                 ),
                 "4" => Array(
                     "file_name" => $Response['immagini'][14]['nomefile'],
                     "time" => $Response['immagini'][14]['ora'],
-                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/NEF/".$Response['immagini'][14]['nomefile']
+                    "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/PNG/RST/".(Unix_Time_Converter($Response['immagini'][14]['ora'])."_".$Response['immagini'][14]['nomefile'])
                 )
             )
         ),
         "GIFs" => Array(
             "NEF" => Array(
                 "file_name" => "NEF.gif",
-                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/NEF.gif"
+                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/".(Unix_Time_Converter($Response['immagini'][0]['ora'])."_"."NEF.gif")
             ),
             "IRC" => Array(
                 "file_name" => "IRC.gif",
-                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/IRC.gif"
+                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/".(Unix_Time_Converter($Response['immagini'][0]['ora'])."_"."IRC.gif")
             ),
             "RST" => Array(
                 "file_name" => "RST.gif",
-                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/RST.gif"
+                "image" => "https://genio2003.altervista.org/MAM_Satellite_Images/images/GIF/".(Unix_Time_Converter($Response['immagini'][0]['ora'])."_"."RST.gif")
             ),
         ),
         "Time" => Array(
@@ -229,18 +237,18 @@ function main()
 
     for($i=0;$i<=4;$i++)
     {
-        Base64_to_PNG($Response['immagini'][$i]['nomefile'],$Response['immagini'][$i]['image'],"NEF");
+        Base64_to_PNG((Unix_Time_Converter($Response['immagini'][$i]['ora'])."_".$Response['immagini'][$i]['nomefile']),$Response['immagini'][$i]['image'],"NEF");
     }
     for($i=5;$i<=9;$i++)
     {
-        Base64_to_PNG($Response['immagini'][$i]['nomefile'],$Response['immagini'][$i]['image'],"IRC");
+        Base64_to_PNG((Unix_Time_Converter($Response['immagini'][$i]['ora'])."_".$Response['immagini'][$i]['nomefile']),$Response['immagini'][$i]['image'],"IRC");
     }
     for($i=10;$i<=14;$i++)
     {
-        Base64_to_PNG($Response['immagini'][$i]['nomefile'],$Response['immagini'][$i]['image'],"RST");
+        Base64_to_PNG((Unix_Time_Converter($Response['immagini'][$i]['ora'])."_".$Response['immagini'][$i]['nomefile']),$Response['immagini'][$i]['image'],"RST");
     }
 
-    Multiple_PNGs_to_GIF();
+    Multiple_PNGs_to_GIF((Unix_Time_Converter($Response['immagini'][0]['ora'])."_"."NEF.gif"),(Unix_Time_Converter($Response['immagini'][0]['ora'])."_"."IRC.gif"),(Unix_Time_Converter($Response['immagini'][0]['ora'])."_"."RST.gif"));
 
     Make_JSON($Response);
     
@@ -248,4 +256,4 @@ function main()
 
 main();
 
-?>
+?>
