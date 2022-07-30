@@ -1,4 +1,4 @@
-# MEM_Satellite_Images
+# MAM_Satellite_Images
 
 ### - Descrizione
 Script PHP che permette di ottenere tre tipi diversi di immagini satellitari meteo tramite l'API utilizzata dall'app mobile di [MeteoAM](http://www.meteoam.it "MeteoAM") (Meteo Areonautica Militare).
